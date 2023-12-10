@@ -5,8 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:oop_project"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="800">
     <Grid>
-        
+        <!-- Примеры элементов интерфейса -->
+        <StackPanel Margin="20">
+            <!-- Окно входа -->
+            <StackPanel Name="LoginPanel" Visibility="Visible">
+                <TextBlock Text="Логин:"/>
+                <TextBox Name="UsernameTextBox"/>
+                <TextBlock Text="Пароль:"/>
+                <PasswordBox Name="PasswordBox"/>
+                <Button Content="Войти" Click="LoginButton_Click"/>
+            </StackPanel>
+
+            <!-- Окно меню -->
+            <StackPanel Name="MenuPanel" Visibility="Collapsed">
+                <!-- Элементы для отображения меню (например, ListView) -->
+                <ListView Name="MenuListView">
+                    <!-- Здесь будут элементы меню -->
+                </ListView>
+                <Button Content="Добавить в корзину" Click="AddToCartButton_Click"/>
+            </StackPanel>
+
+            <!-- Окно корзины -->
+            <StackPanel Name="CartPanel" Visibility="Collapsed">
+                <!-- Элементы для отображения содержимого корзины -->
+                <ListView Name="CartListView">
+                    <!-- Здесь будут элементы корзины -->
+                </ListView>
+                <TextBlock Name="TotalAmountTextBlock" Text="Общая сумма: "/>
+                <Button Content="Оформить заказ" Click="PlaceOrderButton_Click"/>
+            </StackPanel>
+
+            <!-- Окно отслеживания заказа -->
+            <StackPanel Name="OrderTrackingPanel" Visibility="Collapsed">
+                <!-- Элементы для отображения статуса заказа -->
+                <TextBlock Name="OrderStatusTextBlock"/>
+                <Button Content="Готово" Click="FinishButton_Click"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>
