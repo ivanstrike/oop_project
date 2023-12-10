@@ -1,0 +1,15 @@
+C:\Users\ria-2\OOP\oop_project\bin\Debug\oop_project.exe.config
+C:\Users\ria-2\OOP\oop_project\bin\Debug\oop_project.exe
+C:\Users\ria-2\OOP\oop_project\bin\Debug\oop_project.pdb
+C:\Users\ria-2\OOP\oop_project\obj\Debug\oop_project.csproj.AssemblyReference.cache
+C:\Users\ria-2\OOP\oop_project\obj\Debug\MainWindow.g.cs
+C:\Users\ria-2\OOP\oop_project\obj\Debug\App.g.cs
+C:\Users\ria-2\OOP\oop_project\obj\Debug\oop_project_MarkupCompile.cache
+C:\Users\ria-2\OOP\oop_project\obj\Debug\oop_project_MarkupCompile.lref
+C:\Users\ria-2\OOP\oop_project\obj\Debug\MainWindow.baml
+C:\Users\ria-2\OOP\oop_project\obj\Debug\oop_project.g.resources
+C:\Users\ria-2\OOP\oop_project\obj\Debug\oop_project.Properties.Resources.resources
+C:\Users\ria-2\OOP\oop_project\obj\Debug\oop_project.csproj.GenerateResource.cache
+C:\Users\ria-2\OOP\oop_project\obj\Debug\oop_project.csproj.CoreCompileInputs.cache
+C:\Users\ria-2\OOP\oop_project\obj\Debug\oop_project.exe
+C:\Users\ria-2\OOP\oop_project\obj\Debug\oop_project.pdb
