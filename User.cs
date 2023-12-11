@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace oop_project
 {
-    internal class User
+    public class User
     {
         private static int idcouner = 0;
         public int Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public int Age {  get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public User(string name, string surname, int age, string email ) 
+        public string Adress { get; set; }
+        public User(string name, string surname, string email, string password, string adress ) 
         { 
             Id = idcouner++;
             Name = name;
             Surname = surname;
-            Age = age;
             Email = email;
-
+            Password = password;
+            Adress = adress;
         }
 
     }

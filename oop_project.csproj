@@ -56,8 +56,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CartItem.cs" />
+    <Compile Include="MenuItem.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="PaymentMethod.cs" />
     <Compile Include="Restaurant.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="UsersRepository.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
