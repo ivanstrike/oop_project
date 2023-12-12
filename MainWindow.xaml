@@ -5,44 +5,91 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:oop_project"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800">
+        Title="Restaurant" Height="600" Width="800">
     <Grid>
-        <!-- Примеры элементов интерфейса -->
         <StackPanel Margin="20">
             <!-- Окно входа -->
             <StackPanel Name="LoginPanel" Visibility="Visible">
-                <TextBlock Text="Логин:"/>
-                <TextBox Name="UsernameTextBox"/>
+                <StackPanel.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Height" Value="30"/>
+                    </Style>
+                </StackPanel.Resources>
+                <TextBlock Text="Вход" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,20"/>
+                <TextBlock Text="Почта:"/>
+                <TextBox Name="EmailTextBox" Height="30"/>
+                <Separator Opacity="0" Height="5"/>
                 <TextBlock Text="Пароль:"/>
-                <PasswordBox Name="PasswordBox"/>
-                <Button Content="Войти" Click="LoginButton_Click"/>
+                <PasswordBox Name="PasswordBox" Height="30"/>
+                <Separator Opacity="0" Height="30"/>
+                <Button Content="Войти" Click="LogInButton_Click" Background="Orange"/>
+                <Separator Opacity="0" Height="5"/>
+                <Button Content="Зарегистрироваться" Click="SignUpButton_Click" Background="FloralWhite"/>
+            </StackPanel>
+            
+            <StackPanel x:Name="ChooseRestaurantPanel" Visibility="Collapsed">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Выберите ресторан:" VerticalAlignment="Center"/>
+                    <Separator Opacity="0" Width="90"/>
+                    <!-- Привязка к элементам в списке ресторанов -->
+                    <ComboBox Height="30" Name="Select" HorizontalAlignment="Right">
+                        <ComboBoxItem Name="VIT" Content="Вкусно и точка"/>
+                        <ComboBoxItem Name="KFC" Content="KFC"/>
+                        <ComboBoxItem Name="BK" Content="Burger King"/>
+                    </ComboBox>
+                </StackPanel>
+                <Separator Opacity="0" Height="15"/>
+                <Button Content="Выбрать" VerticalAlignment="Bottom" Height="30" Background="Orange" Click="SelectRestaurant_Click"/>
+            </StackPanel>
+
+            <StackPanel x:Name="RegistrationPanel" Visibility="Collapsed">
+                <TextBlock Text="Регистрация нового пользователя" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,20"/>
+
+                <StackPanel >
+                    <TextBlock Text="Имя:"/>
+                    <TextBox x:Name="txtName" Width="Auto" MinWidth="300" HorizontalAlignment="Stretch" Height="30"/>
+                </StackPanel>
+                <Separator Opacity="0" Height="5"/>
+                <StackPanel >
+                    <TextBlock Text="Фамилия:"/>
+                    <TextBox x:Name="txtSurname"  Width="Auto" MinWidth="300" HorizontalAlignment="Stretch" Height="30" />
+                </StackPanel>
+                <Separator Opacity="0" Height="5"/>
+                <StackPanel >
+                    <TextBlock Text="Email:"/>
+                    <TextBox x:Name="txtEmail" Width="Auto" MinWidth="300" HorizontalAlignment="Stretch" Height="30" />
+                </StackPanel>
+                <Separator Opacity="0" Height="5"/>
+                <StackPanel >
+                    <TextBlock Text="Пароль:"/>
+                    <PasswordBox  Width="Auto" MinWidth="300" HorizontalAlignment="Stretch" Height="30" />
+                </StackPanel>
+                <Separator Opacity="0" Height="5"/>
+                <StackPanel >
+                    <TextBlock Text="Адрес:"/>
+                    <TextBox x:Name="txtAddress"  Width="Auto" MinWidth="300" HorizontalAlignment="Stretch" Height="30" />
+                </StackPanel>
+                <Separator Opacity="0" Height="5"/>
+                <Button Content="Зарегистрироваться"  Height="30" Background="Orange" Click="Register_Click"/>
+                <Separator Opacity="0" Height="5"/>
+                <Button Content="Войти"  Height="30" Click="BackToLogIn_Click" Background="FloralWhite"/>
             </StackPanel>
 
             <!-- Окно меню -->
-            <StackPanel Name="MenuPanel" Visibility="Collapsed">
-                <!-- Элементы для отображения меню (например, ListView) -->
-                <ListView Name="MenuListView">
-                    <!-- Здесь будут элементы меню -->
-                </ListView>
-                <Button Content="Добавить в корзину" Click="AddToCartButton_Click"/>
+            <StackPanel Name="MenuPanel_1" Visibility="Collapsed">
+                
+            </StackPanel>
+            
+            <StackPanel Name="MenuPanel_2" Visibility="Collapsed">
+                
+            </StackPanel>
+            
+            <StackPanel Name="MenuPanel_3" Visibility="Collapsed">
+                
             </StackPanel>
 
-            <!-- Окно корзины -->
-            <StackPanel Name="CartPanel" Visibility="Collapsed">
-                <!-- Элементы для отображения содержимого корзины -->
-                <ListView Name="CartListView">
-                    <!-- Здесь будут элементы корзины -->
-                </ListView>
-                <TextBlock Name="TotalAmountTextBlock" Text="Общая сумма: "/>
-                <Button Content="Оформить заказ" Click="PlaceOrderButton_Click"/>
-            </StackPanel>
 
-            <!-- Окно отслеживания заказа -->
-            <StackPanel Name="OrderTrackingPanel" Visibility="Collapsed">
-                <!-- Элементы для отображения статуса заказа -->
-                <TextBlock Name="OrderStatusTextBlock"/>
-                <Button Content="Готово" Click="FinishButton_Click"/>
-            </StackPanel>
+
         </StackPanel>
     </Grid>
 </Window>
