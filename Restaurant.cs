@@ -9,7 +9,7 @@ namespace oop_project
         public string Name { get; set; }
         public string Adress { get; set; }
         public string Description { get; set; }
-        //public Menu menu;
+        public Menu Menu { get; set; }
         public Restaurant(string name, string adress, string description)
         {
             Id = idcounter++;
@@ -17,10 +17,10 @@ namespace oop_project
             Adress = adress;
             Description = description;
         }
-        /*public List<MenuItem> GetMenu()
+        public Menu GetMenu()
         {
-            return menu;
-        }*/
+            return Menu;
+        }
 
     }
 }

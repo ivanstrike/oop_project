@@ -57,9 +57,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CartItem.cs" />
+    <Compile Include="CreditCard.cs" />
+    <Compile Include="Delivery.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="MenuItem.cs" />
     <Compile Include="Order.cs" />
-    <Compile Include="PaymentMethod.cs" />
+    <Compile Include="PaymentService.cs" />
     <Compile Include="Restaurant.cs" />
     <Compile Include="User.cs" />
     <Compile Include="UsersRepository.cs" />

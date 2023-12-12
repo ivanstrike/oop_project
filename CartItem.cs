@@ -6,5 +6,11 @@ namespace oop_project
     {
         public MenuItem Item { get; set; }
         public int Quantity { get; set; }
+        public CartItem (MenuItem item, int quantity)
+        {
+            Item = item;
+            Quantity = quantity;
+        }
+        
     }
 }
