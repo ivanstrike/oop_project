@@ -9,7 +9,7 @@
     <Grid>
         <StackPanel Margin="20">
             <!-- Окно входа -->
-            <StackPanel Name="LoginPanel" Visibility="Collapsed">
+            <StackPanel Name="LoginPanel" Visibility="Visible">
                 <StackPanel.Resources>
                     <Style TargetType="Button">
                         <Setter Property="Height" Value="30"/>
@@ -73,7 +73,7 @@
             </StackPanel>
 
             <!-- Окно меню -->
-            <StackPanel Name="MenuPanel_1" Visibility="Visible" Height="545">
+            <StackPanel Name="MenuPanel_1" Visibility="Collapsed" Height="545">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30"/>
@@ -81,7 +81,7 @@
                         <RowDefinition Height="430"/>
                         <RowDefinition Height="30"/>
                     </Grid.RowDefinitions>
-
+                    <Button Content="Назад" Height="25" Width="60" HorizontalAlignment="Left" Click="BackToSelect1_Click" Background="Wheat" VerticalAlignment="Center"  FontSize="12"  Grid.Row="0"/>
                     <TextBlock Text="Меню McDonalds" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10" Grid.Row="1"  />
                     <ListBox x:Name="MenuListBox1" ItemsSource="{Binding menuItems}" Grid.Row="2">
                         <ListBox.ItemTemplate>
@@ -113,12 +113,14 @@
             <StackPanel Name="MenuPanel_2" Visibility="Collapsed">
                 <Grid>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
                         <RowDefinition Height="35"/>
-                        <RowDefinition Height="440"/>
+                        <RowDefinition Height="430"/>
                         <RowDefinition Height="30"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Text="Меню Burger King" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10" Grid.Row="0" />
-                    <ListBox x:Name="MenuListBox2" ItemsSource="{Binding menuItems}" Grid.Row="1">
+                    <Button Content="Назад" Height="25" Width="60" HorizontalAlignment="Left" Click="BackToSelect2_Click" Background="Wheat" VerticalAlignment="Center"  FontSize="12"  Grid.Row="0"/>
+                    <TextBlock Text="Меню Burger King" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10" Grid.Row="1"  />
+                    <ListBox x:Name="MenuListBox2" ItemsSource="{Binding menuItems}" Grid.Row="2">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Border BorderBrush="Black" BorderThickness="1" Margin="5" Padding="5" Width="720">
@@ -141,19 +143,21 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Button Content="Перейти к заказу" Height="30" Click="GoToOrder_Click" Background="FloralWhite" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="14"  Grid.Row="2"/>
+                    <Button Content="Перейти к заказу" Height="30" Click="GoToOrder_Click" Background="FloralWhite" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="14"  Grid.Row="3"/>
                 </Grid>
             </StackPanel>
             
             <StackPanel Name="MenuPanel_3" Visibility="Collapsed">
                 <Grid>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
                         <RowDefinition Height="35"/>
-                        <RowDefinition Height="440"/>
+                        <RowDefinition Height="430"/>
                         <RowDefinition Height="30"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Text="Меню KFC" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10" Grid.Row="0" />
-                    <ListBox x:Name="MenuListBox3" ItemsSource="{Binding menuItems}" Grid.Row="1">
+                    <Button Content="Назад" Height="25" Width="60" HorizontalAlignment="Left" Click="BackToSelect3_Click" Background="Wheat" VerticalAlignment="Center"  FontSize="12"  Grid.Row="0"/>
+                    <TextBlock Text="Меню KFC" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10" Grid.Row="1"  />
+                    <ListBox x:Name="MenuListBox3" ItemsSource="{Binding menuItems}" Grid.Row="2">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Border BorderBrush="Black" BorderThickness="1" Margin="5" Padding="5" Width="720">
@@ -176,7 +180,7 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Button Content="Перейти к заказу" Height="30" Click="GoToOrder_Click" Background="FloralWhite" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="14"  Grid.Row="2"/>
+                    <Button Content="Перейти к заказу" Height="30" Click="GoToOrder_Click" Background="FloralWhite" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="14"  Grid.Row="3"/>
                 </Grid>
             </StackPanel>
 

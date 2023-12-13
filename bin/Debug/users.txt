@@ -4,3 +4,4 @@ r,r,r,,r
 r,r,rr,,r
 и,и,и,ф,и
 w,w,w,w,w
+q,q,q,q,q

@@ -54,17 +54,17 @@ namespace oop_project
                 MenuListBox1.Items.Add(item);
             }
 
-            menu1.Add(Burger);
-            menu1.Add(FreePotate);
-            menu1.Add(Cola);
-            foreach (MenuItem item in menu1.Items)
+            menu2.Add(Burger);
+            menu2.Add(FreePotate);
+            menu2.Add(Cola);
+            foreach (MenuItem item in menu2.Items)
             {
                 MenuListBox2.Items.Add(item);
             }
 
-            menu1.Add(FreePotate);
-            menu1.Add(Cola);
-            foreach (MenuItem item in menu1.Items)
+            menu3.Add(FreePotate);
+            menu3.Add(Cola);
+            foreach (MenuItem item in menu3.Items)
             {
                 MenuListBox3.Items.Add(item);
             }
@@ -136,9 +136,30 @@ namespace oop_project
                 }
             }
         }
+
+        private void BackToSelect1_Click(object sender, RoutedEventArgs e)
+        {
+            MenuPanel_1.Visibility = Visibility.Collapsed;
+            ChooseRestaurantPanel.Visibility=Visibility.Visible;
+        }
+
+        private void BackToSelect2_Click(object sender, RoutedEventArgs e)
+        {
+            MenuPanel_2.Visibility = Visibility.Collapsed;
+            ChooseRestaurantPanel.Visibility = Visibility.Visible;
+        }
+        private void BackToSelect3_Click(object sender, RoutedEventArgs e)
+        {
+            MenuPanel_3.Visibility = Visibility.Collapsed;
+            ChooseRestaurantPanel.Visibility = Visibility.Visible;
+        }
         private void AddToCart_Click(object sender, RoutedEventArgs e)
         {
-
+            Button addToCartButton = sender as Button;
+            if (addToCartButton != null)
+            {
+                addToCartButton.Background = Brushes.GreenYellow;
+                addToCartButton.Content = "Добавлено в заказ";            }
         }
         
 
