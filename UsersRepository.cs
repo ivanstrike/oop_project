@@ -33,6 +33,7 @@ namespace oop_project
                 using (StreamWriter sw = File.AppendText(usersFilePath))
                 {
                     sw.WriteLine(userData);
+                    sw.Close();
                 }
                 return true;
             }

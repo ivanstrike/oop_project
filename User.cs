@@ -9,7 +9,7 @@ namespace oop_project
     public class User
     {
         private static int idcouner = 0;
-        public int Id { get; set; }
+        public int Id { private get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Email { get; set; }

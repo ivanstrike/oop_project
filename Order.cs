@@ -10,7 +10,7 @@ namespace oop_project
     internal class Order
     {
         private static int idcounter = 0;
-        public int Id { get; set; }
+        public int Id { private get; set; }
         public List<CartItem> Items { get; set; }
         public DateTime OrderDate { get; set; }
         public double TotalAmount { get; set; }
@@ -21,19 +21,25 @@ namespace oop_project
             Id = idcounter++;
             Items = items;
             OrderDate = DateTime.Now;
-            TotalAmount = Items.Sum(item => item.Item.Price * item.Quantity);
+            TotalAmount = 0;
             IsPaid = false;
             Status = "Oжидание платежа";
         }
+
+        public void TotalAmountCount()
+        {
+            Items.Sum(item => item.Price* item.Quantity);
+        }
+
         public void AddItem(CartItem item)
         {
             Items.Add(item);
-            TotalAmount += item.Item.Price;
+            TotalAmount += item.Price;
         }
         public void RemoveItem(CartItem item)
         {
             Items.Remove(item);
-            TotalAmount -= item.Item.Price; 
+            TotalAmount -= item.Price; 
         }
 
         public void PaymentProcess(CreditCard card)

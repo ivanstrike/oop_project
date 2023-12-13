@@ -5,11 +5,11 @@ namespace oop_project
     public class Restaurant
     {
         private static int idcounter = 0;
-        public int Id { get; set; }
+        public int Id { private get; set; }
         public string Name { get; set; }
         public string Adress { get; set; }
         public string Description { get; set; }
-        public Menu Menu { get; set; }
+        public RestMenu Menu { get; set; }
         public Restaurant(string name, string adress, string description)
         {
             Id = idcounter++;
@@ -17,7 +17,7 @@ namespace oop_project
             Adress = adress;
             Description = description;
         }
-        public Menu GetMenu()
+        public RestMenu GetMenu()
         {
             return Menu;
         }

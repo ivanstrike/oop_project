@@ -3,12 +3,12 @@ using System.Windows.Documents;
 
 namespace oop_project
 {
-    public class Menu
+    public class RestMenu
     {
         public List<MenuItem> Items { get; set; }
-        public Menu(List<MenuItem> items) 
-        {
-            Items = items;
+        public RestMenu() 
+        { 
+            Items = new List<MenuItem>();
         }
         public void Add(MenuItem item)
         {

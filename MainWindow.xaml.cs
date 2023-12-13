@@ -23,15 +23,58 @@ namespace oop_project
     public partial class MainWindow : Window
     {
         UsersRepository usersRepository = new UsersRepository();
+        Restaurant McDonalds = new Restaurant("McDonalds", "Красная площадь", "Лучший ресторан быстрого питания");
+        Restaurant BurgerKing = new Restaurant("BurgerKing", "Балтийский переулок, д.5", "Бургер Кинг – это место, где готовят мясо на огне");
+        Restaurant KfC = new Restaurant("KFC", "ул. Театральная, д.8", "Kentucky Fried Chicken (KFC) — международная сеть ресторанов общественного питания, специализирующаяся на блюдах из курятины");
+        List<Restaurant> restlist = new List<Restaurant>();
+        MenuItem Burger = new MenuItem("Бургер", "Вкусный бургер с курицей", 156.6);
+        MenuItem Cola = new MenuItem("Coco-cola", "Газированый напиток", 89.8);
+        MenuItem FreePotate = new MenuItem("Картошка фри", "Хрустящий картофель фри", 125.2);
+        RestMenu menu1 = new RestMenu();
+        RestMenu menu2 = new RestMenu();
+        RestMenu menu3 = new RestMenu();
+
         public MainWindow()
         {
             InitializeComponent();
+            restlist.Add(McDonalds);
+            restlist.Add(BurgerKing);
+            restlist.Add(KfC);
+
+            SelectBox.DisplayMemberPath = "Name";
+            foreach (Restaurant rest in restlist)
+            {
+                SelectBox.Items.Add(rest);
+            }
+
+            menu1.Add(Burger);
+            menu1.Add(Cola);
+            foreach (MenuItem item in menu1.Items)
+            {
+                MenuListBox1.Items.Add(item);
+            }
+
+            menu1.Add(Burger);
+            menu1.Add(FreePotate);
+            menu1.Add(Cola);
+            foreach (MenuItem item in menu1.Items)
+            {
+                MenuListBox2.Items.Add(item);
+            }
+
+            menu1.Add(FreePotate);
+            menu1.Add(Cola);
+            foreach (MenuItem item in menu1.Items)
+            {
+                MenuListBox3.Items.Add(item);
+            }
+
         }
         private void LogInButton_Click(object sender, RoutedEventArgs e)
         {
             string email = EmailTextBox.Text;
             string password = PasswordBox.Password.ToString();
-            if(usersRepository.LogIn(email, password))
+            if (usersRepository.LogIn(email, password))
             {
                 LoginPanel.Visibility = Visibility.Collapsed;
                 ChooseRestaurantPanel.Visibility = Visibility.Visible;
@@ -41,7 +84,7 @@ namespace oop_project
 
         public void SignUpButton_Click(object sender, RoutedEventArgs e)
         {
-            LoginPanel.Visibility= Visibility.Collapsed;
+            LoginPanel.Visibility = Visibility.Collapsed;
             RegistrationPanel.Visibility = Visibility.Visible;
         }
         private void Register_Click(object sender, RoutedEventArgs e)
@@ -57,12 +100,12 @@ namespace oop_project
                 RegistrationPanel.Visibility = Visibility.Collapsed;
                 LoginPanel.Visibility = Visibility.Visible;
             }
-            else { MessageBox.Show("Пользователь с такими данными уже существует");}
+            else { MessageBox.Show("Пользователь с такими данными уже существует"); }
 
         }
         private void BackToLogIn_Click(object sender, RoutedEventArgs e)
         {
-            RegistrationPanel.Visibility= Visibility.Collapsed;
+            RegistrationPanel.Visibility = Visibility.Collapsed;
             LoginPanel.Visibility = Visibility.Visible;
         }
         private string ConvertSecureStringToString(SecureString secureString)
@@ -81,12 +124,32 @@ namespace oop_project
 
         private void SelectRestaurant_Click(object sender, RoutedEventArgs e)
         {
-            //реализовать выбор ресторана из combobox
-            /*if(Select.SelectedItem == "Вкусно и точка")
+            if (SelectBox.SelectedItem != null)
             {
-                ChooseRestaurantPanel.Visibility= Visibility.Collapsed;
-                MenuPanel_1.Visibility= Visibility.Visible;
-            }*/
+                Restaurant selectedRestaurant = (Restaurant)SelectBox.SelectedItem;
+                ChooseRestaurantPanel.Visibility = Visibility.Collapsed;
+                if (selectedRestaurant.Name == "McDonalds") { MenuPanel_1.Visibility = Visibility.Visible; }
+                else
+                {
+                    if (selectedRestaurant.Name == "BurgerKing") { MenuPanel_2.Visibility = Visibility.Visible; }
+                    else MenuPanel_3.Visibility = Visibility.Visible;
+                }
+            }
+        }
+        private void AddToCart_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        
+
+        private void GoToOrder_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

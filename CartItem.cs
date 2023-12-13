@@ -2,13 +2,11 @@
 
 namespace oop_project
 {
-    public class CartItem
+    public class CartItem : MenuItem
     {
-        public MenuItem Item { get; set; }
         public int Quantity { get; set; }
-        public CartItem (MenuItem item, int quantity)
+        public CartItem (string name, string description, double price, int quantity) :base(name, description, price)
         {
-            Item = item;
             Quantity = quantity;
         }
         

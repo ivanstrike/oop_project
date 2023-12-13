@@ -1,2 +1,6 @@
 
 a,a,a,a,a
+r,r,r,,r
+r,r,rr,,r
+и,и,и,ф,и
+w,w,w,w,w
