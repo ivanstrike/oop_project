@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace oop_project
 {
-    internal class Order
+    internal class Order 
     {
         private static int idcounter = 0;
         public int Id { private get; set; }
@@ -16,19 +17,19 @@ namespace oop_project
         public double TotalAmount { get; set; }
         public bool IsPaid {  get; set; }
         public string Status { get; set; }
-        public Order(List<CartItem> items)
+        public Order()
         {
             Id = idcounter++;
-            Items = items;
+            Items = new List<CartItem>();
             OrderDate = DateTime.Now;
             TotalAmount = 0;
             IsPaid = false;
-            Status = "Oжидание платежа";
+            Status = "Создание";
         }
 
-        public void TotalAmountCount()
+        public double TotalAmountCount()
         {
-            Items.Sum(item => item.Price* item.Quantity);
+            return Items.Sum(item => item.Price* item.Quantity);
         }
 
         public void AddItem(CartItem item)
@@ -73,6 +74,8 @@ namespace oop_project
             Status = "Доставлен";
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+       
 
     }
 }

@@ -5,3 +5,6 @@ r,r,rr,,r
 и,и,и,ф,и
 w,w,w,w,w
 q,q,q,q,q
+e,e,e,,e
+е,е,е,,е
+y,y,y,e,y

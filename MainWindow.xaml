@@ -73,25 +73,26 @@
             </StackPanel>
 
             <!-- Окно меню -->
-            <StackPanel Name="MenuPanel_1" Visibility="Collapsed" Height="545">
+            <StackPanel Name="MenuPanel" Visibility="Collapsed" Height="545">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30"/>
-                        <RowDefinition Height="35"/>
-                        <RowDefinition Height="430"/>
+                        <RowDefinition Height="435"/>
+                        <RowDefinition Height="30"/>
                         <RowDefinition Height="30"/>
                     </Grid.RowDefinitions>
-                    <Button Content="Назад" Height="25" Width="60" HorizontalAlignment="Left" Click="BackToSelect1_Click" Background="Wheat" VerticalAlignment="Center"  FontSize="12"  Grid.Row="0"/>
-                    <TextBlock Text="Меню McDonalds" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10" Grid.Row="1"  />
-                    <ListBox x:Name="MenuListBox1" ItemsSource="{Binding menuItems}" Grid.Row="2">
+                    <Button Content="Назад" Height="25" Width="60" HorizontalAlignment="Left" Click="BackToSelect_Click" Background="Wheat" VerticalAlignment="Center"  FontSize="12"  Grid.Row="0"/>
+                    <StackPanel x:Name="McDonaldsMenu" Visibility="Collapsed" Grid.Row="1">
+                    <TextBlock Text="Меню McDonalds" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10"   />
+                        <ListBox x:Name="MenuListBox1" ItemsSource="{Binding menuItems}" Height="435" Width="750" VerticalContentAlignment="Center" >
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Border BorderBrush="Black" BorderThickness="1" Margin="5" Padding="5" Width="720">
-                                    <!-- Весь ваш контент здесь -->
+                                    
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="550" />
-                                            <ColumnDefinition Width="150" />
+                                            <ColumnDefinition Width="140" />
                                         </Grid.ColumnDefinitions>
 
                                         <StackPanel Grid.Column="0" VerticalAlignment="Center">
@@ -100,90 +101,108 @@
                                             <TextBlock Text="{Binding Price, StringFormat={}{0:C}}" Margin="0,5,0,0" />
                                         </StackPanel>
 
-                                        <Button Grid.Column="1" Content="Добавить в заказ" Width="150" Height="30" Background="Orange" Click="AddToCart_Click" Tag="{Binding}" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                                            <Button Grid.Column="1" Content="Добавить в заказ" Width="150" Height="30" Background="Orange" Click="AddToCart_Click" Tag="{Binding}" HorizontalAlignment="Right" VerticalAlignment="Center" CommandParameter="{Binding}" />
                                     </Grid>
                                 </Border>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
+                    </StackPanel>
+                    <StackPanel x:Name="BKMenu" Visibility="Collapsed" Grid.Row="1">
+                        <TextBlock Text="Меню Burger King" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10" Grid.Row="1"  />
+                        <ListBox x:Name="MenuListBox2" ItemsSource="{Binding menuItems}"  Height="435" Width="750" VerticalContentAlignment="Center">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BorderBrush="Black" BorderThickness="1" Margin="5" Padding="5" Width="720">
+                                        
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="550" />
+                                                <ColumnDefinition Width="150" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                                                <TextBlock Text="{Binding Name}" FontWeight="Bold" />
+                                                <TextBlock Text="{Binding Description}" TextWrapping="Wrap" Margin="0,5,0,0" />
+                                                <TextBlock Text="{Binding Price, StringFormat={}{0:C}}" Margin="0,5,0,0" />
+                                            </StackPanel>
+
+                                            <Button Grid.Column="1" Content="Добавить в заказ" Width="150" Height="30" Background="Orange" Click="AddToCart_Click" Tag="{Binding}" HorizontalAlignment="Right" VerticalAlignment="Center" CommandParameter="{Binding}" />
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                    <StackPanel x:Name="KFCMenu" Visibility="Collapsed" Grid.Row="1">
+                        <TextBlock Text="Меню KFC" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10" Grid.Row="1"  />
+                        <ListBox x:Name="MenuListBox3" ItemsSource="{Binding menuItems}"  Height="435" Width="750" VerticalContentAlignment="Center" >
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BorderBrush="Black" BorderThickness="1" Margin="5" Padding="5" Width="720">
+                                       
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="550" />
+                                                <ColumnDefinition Width="150" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                                                <TextBlock Text="{Binding Name}" FontWeight="Bold" />
+                                                <TextBlock Text="{Binding Description}" TextWrapping="Wrap" Margin="0,5,0,0" />
+                                                <TextBlock Text="{Binding Price, StringFormat={}{0:C}}" Margin="0,5,0,0" />
+                                            </StackPanel>
+
+                                            <Button Grid.Column="1" Content="Добавить в заказ" Width="150" Height="30" Background="Orange"  Click="AddToCart_Click" Tag="{Binding}" HorizontalAlignment="Right" VerticalAlignment="Center" CommandParameter="{Binding}"/>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                    <TextBlock Grid.Row="2" x:Name="TotalAmountInMenu" Text="{Binding TotalOrderAmount, StringFormat='Итоговая сумма: {0:C}'}" FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10"/>
                     <Button Content="Перейти к заказу" Height="30" Click="GoToOrder_Click" Background="FloralWhite" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="14"  Grid.Row="3"/>
                 </Grid>
             </StackPanel>
             
-            <StackPanel Name="MenuPanel_2" Visibility="Collapsed">
+            <StackPanel Name="Order_Panel" Visibility="Collapsed">
                 <Grid>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="370"/>
                         <RowDefinition Height="30"/>
-                        <RowDefinition Height="35"/>
-                        <RowDefinition Height="430"/>
                         <RowDefinition Height="30"/>
-                    </Grid.RowDefinitions>
-                    <Button Content="Назад" Height="25" Width="60" HorizontalAlignment="Left" Click="BackToSelect2_Click" Background="Wheat" VerticalAlignment="Center"  FontSize="12"  Grid.Row="0"/>
-                    <TextBlock Text="Меню Burger King" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10" Grid.Row="1"  />
-                    <ListBox x:Name="MenuListBox2" ItemsSource="{Binding menuItems}" Grid.Row="2">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Border BorderBrush="Black" BorderThickness="1" Margin="5" Padding="5" Width="720">
-                                    <!-- Весь ваш контент здесь -->
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="550" />
-                                            <ColumnDefinition Width="150" />
-                                        </Grid.ColumnDefinitions>
-
-                                        <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                                            <TextBlock Text="{Binding Name}" FontWeight="Bold" />
-                                            <TextBlock Text="{Binding Description}" TextWrapping="Wrap" Margin="0,5,0,0" />
-                                            <TextBlock Text="{Binding Price, StringFormat={}{0:C}}" Margin="0,5,0,0" />
-                                        </StackPanel>
-
-                                        <Button Grid.Column="1" Content="Добавить в заказ" Width="150" Height="30" Background="Orange" Click="AddToCart_Click" Tag="{Binding}" HorizontalAlignment="Right" VerticalAlignment="Center" />
-                                    </Grid>
-                                </Border>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                    <Button Content="Перейти к заказу" Height="30" Click="GoToOrder_Click" Background="FloralWhite" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="14"  Grid.Row="3"/>
-                </Grid>
-            </StackPanel>
-            
-            <StackPanel Name="MenuPanel_3" Visibility="Collapsed">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="30"/>
-                        <RowDefinition Height="35"/>
-                        <RowDefinition Height="430"/>
                         <RowDefinition Height="30"/>
                     </Grid.RowDefinitions>
-                    <Button Content="Назад" Height="25" Width="60" HorizontalAlignment="Left" Click="BackToSelect3_Click" Background="Wheat" VerticalAlignment="Center"  FontSize="12"  Grid.Row="0"/>
-                    <TextBlock Text="Меню KFC" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10" Grid.Row="1"  />
-                    <ListBox x:Name="MenuListBox3" ItemsSource="{Binding menuItems}" Grid.Row="2">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Border BorderBrush="Black" BorderThickness="1" Margin="5" Padding="5" Width="720">
-                                    <!-- Весь ваш контент здесь -->
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="550" />
-                                            <ColumnDefinition Width="150" />
-                                        </Grid.ColumnDefinitions>
-
-                                        <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                                            <TextBlock Text="{Binding Name}" FontWeight="Bold" />
-                                            <TextBlock Text="{Binding Description}" TextWrapping="Wrap" Margin="0,5,0,0" />
-                                            <TextBlock Text="{Binding Price, StringFormat={}{0:C}}" Margin="0,5,0,0" />
+                    <TextBlock Text="Ваш заказ:" Grid.Row="0" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10"  />
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                        <ItemsControl  Grid.Row="1" x:Name="OrderScroll" ItemsSource="{Binding OrderItems}" Margin="10">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BorderThickness="1" BorderBrush="Gray" Margin="5" Padding="5">
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+                                            <TextBlock Text="{Binding Description}"/>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Button Content="-" Width="25" Height="25" Click="DecreaseQuantity_Click"  Tag="{Binding}"/>
+                                                <Separator Opacity="0" Width="5"/>
+                                                <TextBlock Text="{Binding Quantity, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
+                                                <Separator Opacity="0" Width="5"/>
+                                                <Button Content="+" Width="25" Height="25" Click="IncreaseQuantity_Click"  Tag="{Binding}" />
+                                                <Separator Opacity="0" Width="5"/>
+                                                <Button Content="Удалить" Click="DeleteItem_Click" Tag="{Binding}"/>
+                                            </StackPanel>
                                         </StackPanel>
-
-                                        <Button Grid.Column="1" Content="Добавить в заказ" Width="150" Height="30" Background="Orange" Click="AddToCart_Click" Tag="{Binding}" HorizontalAlignment="Right" VerticalAlignment="Center" />
-                                    </Grid>
-                                </Border>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                    <Button Content="Перейти к заказу" Height="30" Click="GoToOrder_Click" Background="FloralWhite" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="14"  Grid.Row="3"/>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                    <TextBlock Grid.Row="2" x:Name="TotalAmountBlock" Text="{Binding TotalOrderAmount, StringFormat='Итоговая сумма: {0:C}'}" FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10"/>
+                    <Button Content="Перейти к оплате" Height="30" Click="GoToPayment_Click" Background="Orange" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="14"  Grid.Row="3"/>
+                    <Button Content="Назад в меню" Height="30" Click="BackToMenu_Click" Background="FloralWhite" VerticalAlignment="Bottom"  FontSize="14"  Grid.Row="4"/>
                 </Grid>
             </StackPanel>
-
 
 
         </StackPanel>

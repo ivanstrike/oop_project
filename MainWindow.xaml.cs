@@ -23,6 +23,7 @@ namespace oop_project
     public partial class MainWindow : Window
     {
         UsersRepository usersRepository = new UsersRepository();
+        private int TypePanel;
         Restaurant McDonalds = new Restaurant("McDonalds", "Красная площадь", "Лучший ресторан быстрого питания");
         Restaurant BurgerKing = new Restaurant("BurgerKing", "Балтийский переулок, д.5", "Бургер Кинг – это место, где готовят мясо на огне");
         Restaurant KfC = new Restaurant("KFC", "ул. Театральная, д.8", "Kentucky Fried Chicken (KFC) — международная сеть ресторанов общественного питания, специализирующаяся на блюдах из курятины");
@@ -33,7 +34,9 @@ namespace oop_project
         RestMenu menu1 = new RestMenu();
         RestMenu menu2 = new RestMenu();
         RestMenu menu3 = new RestMenu();
-
+        Order order = new Order();
+        
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -57,6 +60,9 @@ namespace oop_project
             menu2.Add(Burger);
             menu2.Add(FreePotate);
             menu2.Add(Cola);
+            menu2.Add(Burger);
+            menu2.Add(FreePotate);
+            menu2.Add(Cola);
             foreach (MenuItem item in menu2.Items)
             {
                 MenuListBox2.Items.Add(item);
@@ -68,7 +74,7 @@ namespace oop_project
             {
                 MenuListBox3.Items.Add(item);
             }
-
+            TotalAmountBlock.Text = $"Total amount: ${order.TotalAmountCount().ToString()}";
         }
         private void LogInButton_Click(object sender, RoutedEventArgs e)
         {
@@ -128,49 +134,125 @@ namespace oop_project
             {
                 Restaurant selectedRestaurant = (Restaurant)SelectBox.SelectedItem;
                 ChooseRestaurantPanel.Visibility = Visibility.Collapsed;
-                if (selectedRestaurant.Name == "McDonalds") { MenuPanel_1.Visibility = Visibility.Visible; }
+                MenuPanel.Visibility = Visibility.Visible;
+                if (selectedRestaurant.Name == "McDonalds") {TypePanel = 0; McDonaldsMenu.Visibility = Visibility.Visible; BKMenu.Visibility = Visibility.Collapsed; KFCMenu.Visibility = Visibility.Collapsed; }
                 else
                 {
-                    if (selectedRestaurant.Name == "BurgerKing") { MenuPanel_2.Visibility = Visibility.Visible; }
-                    else MenuPanel_3.Visibility = Visibility.Visible;
-                }
+                    if (selectedRestaurant.Name == "BurgerKing") { TypePanel = 1; BKMenu.Visibility = Visibility.Visible; McDonaldsMenu.Visibility = Visibility.Collapsed; KFCMenu.Visibility = Visibility.Collapsed; }
+                    else { TypePanel = 2; KFCMenu.Visibility = Visibility.Visible; BKMenu.Visibility = Visibility.Collapsed; McDonaldsMenu.Visibility = Visibility.Collapsed; }
+                    }
             }
         }
 
-        private void BackToSelect1_Click(object sender, RoutedEventArgs e)
+        private void BackToSelect_Click(object sender, RoutedEventArgs e)
         {
-            MenuPanel_1.Visibility = Visibility.Collapsed;
+            MenuPanel.Visibility = Visibility.Collapsed;
             ChooseRestaurantPanel.Visibility=Visibility.Visible;
         }
 
-        private void BackToSelect2_Click(object sender, RoutedEventArgs e)
-        {
-            MenuPanel_2.Visibility = Visibility.Collapsed;
-            ChooseRestaurantPanel.Visibility = Visibility.Visible;
-        }
-        private void BackToSelect3_Click(object sender, RoutedEventArgs e)
-        {
-            MenuPanel_3.Visibility = Visibility.Collapsed;
-            ChooseRestaurantPanel.Visibility = Visibility.Visible;
-        }
+        
         private void AddToCart_Click(object sender, RoutedEventArgs e)
         {
             Button addToCartButton = sender as Button;
             if (addToCartButton != null)
             {
-                addToCartButton.Background = Brushes.GreenYellow;
-                addToCartButton.Content = "Добавлено в заказ";            }
+                if (sender is Button button && button.CommandParameter is MenuItem selectedItem)
+                {
+                    if (!IsInOrder(selectedItem))
+                    {
+                        CartItem cartItem = new CartItem(selectedItem.Name, selectedItem.Description, selectedItem.Price, 1);
+                        order.Items.Add(cartItem);
+                        OrderScroll.Items.Add(cartItem);
+                        TotalAmountInMenu.Text = $"Total amount: ${order.TotalAmountCount().ToString()}";
+                    }
+                    else
+                    {
+                        foreach (CartItem item in order.Items)
+                        {
+                            if (selectedItem.Name == item.Name) item.Quantity++;
+                            TotalAmountInMenu.Text = $"Total amount: ${order.TotalAmountCount().ToString()}";
+                        }
+                    }
+                    TotalAmountBlock.Text = $"Total amount: ${order.TotalAmountCount().ToString()}";
+                }
+                
+            }
+        }
+
+        private bool IsInOrder(MenuItem cartitem)
+        {
+            foreach (CartItem item in order.Items)
+            {
+                if (cartitem.Name == item.Name) return true;
+            }
+            return false;
         }
         
 
         private void GoToOrder_Click(object sender, RoutedEventArgs e)
         {
-
+            MenuPanel.Visibility=Visibility.Collapsed;
+            Order_Panel.Visibility = Visibility.Visible;
+        }
+        
+        private void DecreaseQuantity_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button decreaseButton && decreaseButton.Tag is CartItem orderItem)
+            {
+                if (orderItem.Quantity > 0)
+                {
+                    orderItem.Quantity--;
+                }
+                else
+                {
+                    OrderScroll.Items.Remove(orderItem);
+                    order.Items.Remove(orderItem);
+                }
+                TotalAmountBlock.Text = $"Total amount: ${order.TotalAmountCount().ToString()}";
+            }
+        }
+        private void IncreaseQuantity_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button increaseButton && increaseButton.Tag is CartItem orderItem)
+            {
+                orderItem.Quantity++;
+                TotalAmountBlock.Text = $"Total amount: ${order.TotalAmountCount().ToString()}";
+            }
+            
+        }
+        
+        private void DeleteItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button increaseButton && increaseButton.Tag is CartItem orderItem)
+            {
+                OrderScroll.Items.Remove(orderItem);
+                order.Items.Remove(orderItem);
+                TotalAmountBlock.Text = $"Total amount: ${order.TotalAmountCount().ToString()}";
+            }
+        }
+        private void BackToMenu_Click(object sender, RoutedEventArgs e)
+        {
+            TotalAmountInMenu.Text = $"Total amount: ${order.TotalAmountCount().ToString()}";
+            Order_Panel.Visibility = Visibility.Collapsed;
+            MenuPanel.Visibility = Visibility.Visible;
+            if (TypePanel == 0)
+            {
+                McDonaldsMenu.Visibility = Visibility.Visible;
+            }
+            else if (TypePanel == 1)
+            {
+                BKMenu.Visibility = Visibility.Visible;
+            }
+            else if (TypePanel == 2)
+            {
+                KFCMenu.Visibility = Visibility.Visible;
+            }
+             
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void GoToPayment_Click(object sender, RoutedEventArgs e)
         {
-
+            Order_Panel.Visibility=Visibility.Collapsed;
         }
     }
 }
