@@ -26,7 +26,7 @@
                 <Separator Opacity="0" Height="5"/>
                 <Button Content="Зарегистрироваться" Click="SignUpButton_Click" Background="FloralWhite"/>
             </StackPanel>
-            
+
             <StackPanel x:Name="ChooseRestaurantPanel" Visibility="Collapsed">
                 <TextBlock Text="Выбор ресторана" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,20"/>
                 <StackPanel Orientation="Horizontal">
@@ -83,30 +83,30 @@
                     </Grid.RowDefinitions>
                     <Button Content="Назад" Height="25" Width="60" HorizontalAlignment="Left" Click="BackToSelect_Click" Background="Wheat" VerticalAlignment="Center"  FontSize="12"  Grid.Row="0"/>
                     <StackPanel x:Name="McDonaldsMenu" Visibility="Collapsed" Grid.Row="1">
-                    <TextBlock Text="Меню McDonalds" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10"   />
+                        <TextBlock Text="Меню McDonalds" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10"   />
                         <ListBox x:Name="MenuListBox1" ItemsSource="{Binding menuItems}" Height="435" Width="750" VerticalContentAlignment="Center" >
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Border BorderBrush="Black" BorderThickness="1" Margin="5" Padding="5" Width="720">
-                                    
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="550" />
-                                            <ColumnDefinition Width="140" />
-                                        </Grid.ColumnDefinitions>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BorderBrush="Black" BorderThickness="1" Margin="5" Padding="5" Width="720">
 
-                                        <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                                            <TextBlock Text="{Binding Name}" FontWeight="Bold" />
-                                            <TextBlock Text="{Binding Description}" TextWrapping="Wrap" Margin="0,5,0,0" />
-                                            <TextBlock Text="{Binding Price, StringFormat={}{0:C}}" Margin="0,5,0,0" />
-                                        </StackPanel>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="550" />
+                                                <ColumnDefinition Width="140" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                                                <TextBlock Text="{Binding Name}" FontWeight="Bold" />
+                                                <TextBlock Text="{Binding Description}" TextWrapping="Wrap" Margin="0,5,0,0" />
+                                                <TextBlock Text="{Binding Price, StringFormat={}{0:C}}" Margin="0,5,0,0" />
+                                            </StackPanel>
 
                                             <Button Grid.Column="1" Content="Добавить в заказ" Width="150" Height="30" Background="Orange" Click="AddToCart_Click" Tag="{Binding}" HorizontalAlignment="Right" VerticalAlignment="Center" CommandParameter="{Binding}" />
-                                    </Grid>
-                                </Border>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
                     </StackPanel>
                     <StackPanel x:Name="BKMenu" Visibility="Collapsed" Grid.Row="1">
                         <TextBlock Text="Меню Burger King" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Margin="0,0,0,10" Grid.Row="1"  />
@@ -114,7 +114,7 @@
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Border BorderBrush="Black" BorderThickness="1" Margin="5" Padding="5" Width="720">
-                                        
+
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="550" />
@@ -140,7 +140,7 @@
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Border BorderBrush="Black" BorderThickness="1" Margin="5" Padding="5" Width="720">
-                                       
+
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="550" />
@@ -164,7 +164,7 @@
                     <Button Content="Перейти к заказу" Height="30" Click="GoToOrder_Click" Background="FloralWhite" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="14"  Grid.Row="3"/>
                 </Grid>
             </StackPanel>
-            
+
             <StackPanel Name="Order_Panel" Visibility="Collapsed">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -203,7 +203,54 @@
                     <Button Content="Назад в меню" Height="30" Click="BackToMenu_Click" Background="FloralWhite" VerticalAlignment="Bottom"  FontSize="14"  Grid.Row="4"/>
                 </Grid>
             </StackPanel>
+            
+            <StackPanel Visibility="Collapsed" Name="Payment_Panel">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Оплата" Grid.Row="0" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10"  />
+                    <StackPanel Height="50" Grid.Row="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Card Number:" FontSize="14" Grid.Column="0" VerticalAlignment="Center"/>
+                            <TextBox Grid.Row="0" FontSize="14" Height="30" Grid.Column="1" Margin="5" />
+                        </Grid>
+                    </StackPanel>
+                    <Separator Opacity="0" Width="5"/>
+                    <StackPanel Height="50" Grid.Row="2">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Expiration Date:" FontSize="14" Grid.Column="0" VerticalAlignment="Center"/>
+                            <TextBox Grid.Row="0" FontSize="14" Height="30" Grid.Column="1" Margin="5"/>
+                        </Grid>
+                    </StackPanel>
+                    <Separator Opacity="0" Width="5"/>
+                    <StackPanel Height="50" Grid.Row="3">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="CVV:" FontSize="14" Grid.Column="0" VerticalAlignment="Center"/>
+                            <TextBox Grid.Row="0" FontSize="14" Height="30" Grid.Column="1" Margin="5"/>
+                        </Grid>
+                    </StackPanel>
+                    <Separator Opacity="0" Width="5"/>
 
+                    <Button Content="Оплатить" Width="120" Click="Pay_Click"  Background="Orange" Grid.Row="4" HorizontalAlignment="Center" />
+                </Grid>
+            </StackPanel>
 
         </StackPanel>
     </Grid>

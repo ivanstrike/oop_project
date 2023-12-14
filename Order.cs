@@ -74,7 +74,7 @@ namespace oop_project
             Status = "Доставлен";
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        
        
 
     }

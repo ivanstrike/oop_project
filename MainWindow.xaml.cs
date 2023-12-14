@@ -29,7 +29,7 @@ namespace oop_project
         Restaurant KfC = new Restaurant("KFC", "ул. Театральная, д.8", "Kentucky Fried Chicken (KFC) — международная сеть ресторанов общественного питания, специализирующаяся на блюдах из курятины");
         List<Restaurant> restlist = new List<Restaurant>();
         MenuItem Burger = new MenuItem("Бургер", "Вкусный бургер с курицей", 156.6);
-        MenuItem Cola = new MenuItem("Coco-cola", "Газированый напиток", 89.8);
+        MenuItem Cola = new MenuItem("Coco-cola", "Газировнаный напиток", 89.8);
         MenuItem FreePotate = new MenuItem("Картошка фри", "Хрустящий картофель фри", 125.2);
         RestMenu menu1 = new RestMenu();
         RestMenu menu2 = new RestMenu();
@@ -252,7 +252,20 @@ namespace oop_project
 
         private void GoToPayment_Click(object sender, RoutedEventArgs e)
         {
-            Order_Panel.Visibility=Visibility.Collapsed;
+            if (order.TotalAmountCount() > 0) 
+            {
+                Order_Panel.Visibility = Visibility.Collapsed;
+                Payment_Panel.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MessageBox.Show("Выберите что-нибудь");
+            }
+        }
+
+        private void Pay_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
