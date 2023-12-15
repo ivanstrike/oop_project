@@ -265,7 +265,19 @@ namespace oop_project
 
         private void Pay_Click(object sender, RoutedEventArgs e)
         {
-
+            string cardnumber = CardNumberBox.Text;
+            string expiration_date = ExpirationDateBox.Text;
+            string cvv = CVVBox.Text;
+            CreditCard card = new CreditCard(cardnumber, expiration_date, cvv);
+            order.PaymentProcess(card);
+            if (order.IsPaid)
+            {
+                MessageBox.Show("Оплата прошла успешно");
+            }
+            else
+            {
+                MessageBox.Show("Введены некорректные данные");
+            }
         }
     }
 }

@@ -2,18 +2,19 @@
 
 namespace oop_project
 {
-    public class PaymentService
+    public  class PaymentService
     {
-        public bool Payment(string cardNumber, string expiryDate, string cvv, double amount)
+        
+        public  bool IsPayment(CreditCard card)
         {
-            if (!IsDigit(cardNumber) || cardNumber.Length != 16 || !IsDigit(cvv) || cvv.Length != 3 )
+            if (!IsDigit(card.CardNumber) || card.CardNumber.Length != 16 || !IsDigit(card.CVV) || card.CVV.Length != 3 || card.ExpiryDate.Length!=5)
             {
                 return false;
             }
             return true;
         }
 
-        private bool IsDigit(string cardNumber)
+        private  bool IsDigit(string cardNumber)
         {
             foreach (char c in cardNumber)
             {

@@ -221,7 +221,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="Card Number:" FontSize="14" Grid.Column="0" VerticalAlignment="Center"/>
-                            <TextBox Grid.Row="0" FontSize="14" Height="30" Grid.Column="1" Margin="5" />
+                            <TextBox x:Name="CardNumberBox" Grid.Row="0" FontSize="14" Height="30" Grid.Column="1" Margin="5" />
                         </Grid>
                     </StackPanel>
                     <Separator Opacity="0" Width="5"/>
@@ -232,7 +232,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="Expiration Date:" FontSize="14" Grid.Column="0" VerticalAlignment="Center"/>
-                            <TextBox Grid.Row="0" FontSize="14" Height="30" Grid.Column="1" Margin="5"/>
+                            <TextBox x:Name="ExpirationDateBox" Grid.Row="0" FontSize="14" Height="30" Grid.Column="1" Margin="5"/>
                         </Grid>
                     </StackPanel>
                     <Separator Opacity="0" Width="5"/>
@@ -243,12 +243,19 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="CVV:" FontSize="14" Grid.Column="0" VerticalAlignment="Center"/>
-                            <TextBox Grid.Row="0" FontSize="14" Height="30" Grid.Column="1" Margin="5"/>
+                            <TextBox x:Name="CVVBox" Grid.Row="0" FontSize="14" Height="30" Grid.Column="1" Margin="5"/>
                         </Grid>
                     </StackPanel>
                     <Separator Opacity="0" Width="5"/>
-
-                    <Button Content="Оплатить" Width="120" Click="Pay_Click"  Background="Orange" Grid.Row="4" HorizontalAlignment="Center" />
+                    <StackPanel Height="50" Grid.Row="4">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Content="Оплатить"  Click="Pay_Click" Height="30"  Background="Orange" Grid.Column="1"  Margin="5"/>
+                        </Grid>
+                    </StackPanel>
                 </Grid>
             </StackPanel>
 

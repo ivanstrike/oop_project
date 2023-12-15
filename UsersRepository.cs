@@ -27,7 +27,7 @@ namespace oop_project
             {
                 if (!File.Exists(usersFilePath))
                 {
-                    using (StreamWriter writer = File.CreateText(usersFilePath));
+                    using (StreamWriter writer = File.CreateText(usersFilePath)) ;
                     
                 }
                 using (StreamWriter sw = File.AppendText(usersFilePath))
@@ -39,6 +39,7 @@ namespace oop_project
             }
             catch (IOException ex)
             {
+                Console.WriteLine(ex.Message);
                 return false;
             }
             
@@ -86,6 +87,7 @@ namespace oop_project
             }
             catch (IOException ex)
             {
+                Console.WriteLine(ex.Message);
                 return false;
             }
         }

@@ -48,7 +48,7 @@ namespace oop_project
             PaymentService paymentService = new PaymentService();
             bool paymentSuccess = false;
 
-            if (paymentService.Payment(card.CardNumber, card.ExpiryDate, card.CVV, TotalAmount))
+            if (paymentService.IsPayment(card))
             {
                 paymentSuccess = true;
             }
